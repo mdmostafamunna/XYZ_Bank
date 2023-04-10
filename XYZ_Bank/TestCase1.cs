@@ -5,14 +5,14 @@ namespace XYZ_Bank
     public class Tests : BaseTest
     {
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Smoke Testing")]
         public void NavigateToTheURL()
         {
             driver.FindElement(By.XPath("//button[contains(text(),'Bank Manager Login')]")).Click();
 
         }
 
-        [Test, Order(2)]
+        [Test, Order(2), Category("Sanity Testing")]
         public void AddCustomer()
         {
             driver.FindElement(By.XPath("//body/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]")).Click();
@@ -22,11 +22,6 @@ namespace XYZ_Bank
             driver.FindElement(By.XPath("//body/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/form[1]/button[1]")).Click();
             IAlert idAlert = driver.SwitchTo().Alert();
             idAlert.Accept();
-            
-
-
-
-
         }
     }
 }
