@@ -3,10 +3,12 @@ using OpenQA.Selenium.Support.UI;
 using XYZ_Bank.BaseClass;
 namespace XYZ_Bank
 {
+    [TestFixture]
     public class Tests : BaseTest
     {
 
         [Test, Order(1), Category("Smoke Testing")]
+        [Author("Mostafa Munna", "mmunna@macg.com")]
         public void NavigateToTheURL()
         {
             driver.FindElement(By.XPath("//button[contains(text(),'Bank Manager Login')]")).Click();
@@ -14,6 +16,7 @@ namespace XYZ_Bank
         }
 
         [Test, Order(2), Category("Sanity Testing")]
+        [Description("After running this test script, a customer is automatically created")]
         public void AddCustomer()
         {
             driver.FindElement(By.XPath("//body/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]")).Click();
