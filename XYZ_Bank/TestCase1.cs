@@ -1,5 +1,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Collections;
 using XYZ_Bank.BaseClass;
 namespace XYZ_Bank
 {
@@ -31,17 +32,51 @@ namespace XYZ_Bank
 
         public void OpenCustomer()
         {
-            driver.FindElement(By.XPath("//body/div[1]/div[1]/div[2]/div[1]/div[1]/button[2]")).Click();
-            IWebElement selectUserDropdownList = driver.FindElement(By.XPath(".//*[@id='userSelect']"));
-            SelectElement element = new SelectElement(selectUserDropdownList);
-            element.SelectByText("Munna Patwary");
+            try
+            {
+                driver.FindElement(By.XPath("//body/div[1]/div[1]/div[2]/div[1]/div[1]/button[2]")).Click();
+                IWebElement selectUserDropdownList = driver.FindElement(By.XPath(".//*[@id='userSelect']"));
+                SelectElement element = new SelectElement(selectUserDropdownList);
+                element.SelectByText("Munna Patwary");
 
-            IWebElement selectCurrencyDropdownList = driver.FindElement(By.XPath(".//*[@id='currency']"));
-            SelectElement element1 = new SelectElement(selectCurrencyDropdownList);
-            element1.SelectByIndex(1);
-            driver.FindElement(By.XPath("//button[contains(text(),'Process')]")).Click();
-            IAlert idAlert = driver.SwitchTo().Alert();
-            idAlert.Accept();
+                IWebElement selectCurrencyDropdownList = driver.FindElement(By.XPath(".//*[@id='currencye']"));
+                SelectElement element1 = new SelectElement(selectCurrencyDropdownList);
+                element1.SelectByIndex(1);
+                driver.FindElement(By.XPath("//button[contains(text(),'Process')]")).Click();
+                IAlert idAlert = driver.SwitchTo().Alert();
+                idAlert.Accept();
+
+            }
+            catch (Exception e)
+            {
+                //ITakesScreenshot ts = driver as ITakesScreenshot;
+                //Screenshot screenshot = ts.GetScreenshot();
+                Screenshot  ss = ((ITakesScreenshot)driver).GetScreenshot();
+
+                ss.SaveAsFile("C:\\Users\\Fin Source\\source\\repos\\XYZ_Bank\\XYZ_Bank\\Screenshots\\Screenshot1.png", ScreenshotImageFormat.Png);
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
+            finally
+            {
+                if (driver != null)
+                {
+                    driver.Quit();
+                }
+            }
+
+
+        }
+
+        static IList DataDrivenTesting()
+        {
+            ArrayList list = new ArrayList();
+
+            list.Add("https://www.facebook.com");
+            list.Add("https://www.youtube.com");
+            list.Add("https://www.gmail.com");
+
+            return list;
         }
 
     }
