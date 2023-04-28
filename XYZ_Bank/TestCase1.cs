@@ -48,8 +48,9 @@ namespace XYZ_Bank
 
                 ss.SaveAsFile("C:\\Users\\Fin Source\\source\\repos\\XYZ_Bank\\XYZ_Bank\\Screenshots\\Screenshot1.png", ScreenshotImageFormat.Png);
                 Console.WriteLine(ex.StackTrace);
-                throw;
                 test.Log(Status.Fail, "Failed to navigate to the url.");
+                throw;
+                
             }
 
 
@@ -80,8 +81,9 @@ namespace XYZ_Bank
 
                 ss.SaveAsFile("C:\\Users\\Fin Source\\source\\repos\\XYZ_Bank\\XYZ_Bank\\Screenshots\\Screenshot1.png", ScreenshotImageFormat.Png);
                 Console.WriteLine(ex.StackTrace);
-                throw;
                 test.Log(Status.Fail, "Add Customer Test case is failed");
+                throw;
+                
             }
 
 
